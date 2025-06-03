@@ -15,3 +15,8 @@ export const createUserValidator = [
     .optional() // Wallet address may be attached later
     .matches(/^Pi[a-zA-Z0-9]{20,}$/).withMessage('Invalid Pi wallet address format.'),
 ];
+export const setWalletAddressValidator = [
+  body('walletAddress')
+    .notEmpty().withMessage('Wallet address is required.')
+    .matches(/^Pi[a-zA-Z0-9]{20,}$/).withMessage('Invalid Pi wallet address format.'),
+];
