@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import routes from './routes';
 import environments from './environments';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 
@@ -34,6 +35,9 @@ mongoose.connect(environments.mongo.uri, {
 
 // Setup routes
 app.use('/', routes);
+
+// Global error handler (should be last)
+app.use(errorHandler);
 
 // Start server
 app.listen(environments.app.port, () => {
