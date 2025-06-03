@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: metapix-backend
+    ports:
+      - "8000:8080"
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    volumes:
+      - ./log:/usr/src/app/log
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:5.0
+    container_name: metapix-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: demoapp
+      MONGO_INITDB_ROOT_PASSWORD: dev_password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
