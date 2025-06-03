@@ -4,30 +4,30 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 
 import routes from './routes';
-import userRoutes from './users'; // If this is an Express router
 import environments from './environments';
 import { errorHandler } from './middlewares/errorHandler';
+import userRoutes from './users'; // Make sure users.ts exports an Express router
 
-const app = express(); // ✅ Declare `app` before using it
+const app = express();
 
-// CORS configuration
+// ✅ CORS configuration
 app.use(cors({
   origin: environments.app.frontendUrl,
   credentials: true,
 }));
 
-// JSON parsing middleware
+// ✅ JSON parsing middleware
 app.use(express.json());
 
-// Session configuration
+// ✅ Session configuration
 app.use(session({
   secret: environments.session.secret,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }, // Set to true if using HTTPS in production
+  cookie: { secure: false }, // set to true in production with HTTPS
 }));
 
-// Connect to MongoDB
+// ✅ Connect to MongoDB
 mongoose.connect(environments.mongo.uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -35,15 +35,15 @@ mongoose.connect(environments.mongo.uri, {
   .then(() => console.log(`✅ Connected to MongoDB on: ${environments.mongo.uri}`))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Setup routes
-app.use('/', routes);
-app.use('/api', userRoutes); // ✅ Safe to call after `app` is declared
+// ✅ Mount routes
+app.use('/', routes); // For general/demo routes
+app.use('/api', userRoutes); // For user-related API routes
 
-// Global error handler (must come last)
+// ✅ Global error handler (must be last)
 app.use(errorHandler);
 
-// Start server
+// ✅ Start the server
 app.listen(environments.app.port, () => {
   console.log(`🚀 ${environments.app.name} - Backend listening on port ${environments.app.port}`);
-  console.log(`🌐 CORS config: responding to ${environments.app.frontendUrl}`);
+  console.log(`🌐 CORS config: responding to frontend hosted on ${environments.app.frontendUrl}`);
 });
