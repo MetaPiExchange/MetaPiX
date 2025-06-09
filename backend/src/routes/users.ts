@@ -1,13 +1,13 @@
 import express from 'express';
 import { validationResult } from 'express-validator';
 import { createUserValidator, setWalletAddressValidator } from '../validators/userValidator';
-import { findOrCreateUser, setWalletAddress, getWalletAddress } from '../handlers/users';
+import { findOrCreateUser, setWalletAddress } from '../handlers/users';
 
 const router = express.Router();
 
 /**
  * POST /api/users
- * Creates or finds a user and optionally sets wallet address
+ * Creates or finds a user and links a wallet (optional).
  */
 router.post('/users', createUserValidator, (req, res) => {
   const errors = validationResult(req);
@@ -17,21 +17,24 @@ router.post('/users', createUserValidator, (req, res) => {
 
   const { uid, username, walletAddress } = req.body;
 
-  const user = findOrCreateUser(uid, username);
+  try {
+    const user = findOrCreateUser(uid, username);
 
-  if (walletAddress) {
-    setWalletAddress(uid, walletAddress);
+    if (walletAddress) {
+      setWalletAddress(uid, walletAddress);
+      user.walletAddress = walletAddress;
+    }
+
+    return res.status(200).json({ user });
+  } catch (err) {
+    console.error('❌ Error creating user:', err);
+    return res.status(500).json({ error: 'Internal server error' });
   }
-
-  res.status(200).json({
-    message: 'User created or updated successfully.',
-    user,
-  });
 });
 
 /**
  * POST /api/users/wallet
- * Attaches or updates wallet address for an existing user
+ * Attaches a wallet address to an existing user.
  */
 router.post('/users/wallet', setWalletAddressValidator, (req, res) => {
   const errors = validationResult(req);
@@ -40,33 +43,15 @@ router.post('/users/wallet', setWalletAddressValidator, (req, res) => {
   }
 
   const { uid, walletAddress } = req.body;
-  setWalletAddress(uid, walletAddress);
 
-  res.status(200).json({
-    message: 'Wallet address updated successfully.',
-    uid,
-    walletAddress,
-  });
-});
-
-/**
- * GET /api/users/:uid
- * Retrieves user and wallet info
- */
-router.get('/users/:uid', (req, res) => {
-  const { uid } = req.params;
-  const walletAddress = getWalletAddress(uid);
-
-  if (!walletAddress) {
-    return res.status(404).json({
-      error: 'User or wallet address not found.',
-    });
+  try {
+    setWalletAddress(uid, walletAddress);
+    return res.status(200).json({ message: 'Wallet address updated successfully.' });
+  } catch (err) {
+    console.error('❌ Error updating wallet address:', err);
+    return res.status(500).json({ error: 'Internal server error' });
   }
-
-  res.status(200).json({
-    uid,
-    walletAddress,
-  });
 });
 
 export default router;
+  
