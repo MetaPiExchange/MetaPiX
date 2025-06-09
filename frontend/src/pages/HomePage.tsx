@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TrendingNFTs from '../components/TrendingNFTs';
+import CreatorLeaderboard from '../components/CreatorLeaderboard';
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
 
       <section className="home-trending-section">
         <TrendingNFTs />
+        <CreatorLeaderboard />
       </section>
     </div>
   );
