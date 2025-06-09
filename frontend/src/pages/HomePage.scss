@@ -1,13 +1,13 @@
 .home-container {
-  text-align: center;
-  background: #1c1c2e;
+  background-color: #0e0e1c;
   color: #ffffff;
   min-height: 100vh;
-  padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
 }
 
 .home-header {
+  text-align: center;
   margin-bottom: 3rem;
 
   .logo {
@@ -17,39 +17,41 @@
 
   h1 {
     font-size: 2.5rem;
-    color: #f5c518; // Pi yellow
+    color: #f5c518;
   }
 
   .subtitle {
     font-size: 1.2rem;
-    color: #cccccc;
-    margin-bottom: 2rem;
+    color: #ccc;
+    margin-top: 0.5rem;
   }
 
   .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+    margin-top: 2rem;
 
     .btn {
-      background: #f5c518;
-      color: #1c1c2e;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      margin: 0 0.5rem;
+      font-size: 1rem;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-
-      &:hover {
-        background: #ffd700;
-      }
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
 
       &.secondary {
-        background: #444;
-        color: #fff;
+        background-color: #2a2a3c;
+        color: #f5c518;
 
         &:hover {
-          background: #555;
+          background-color: #34344a;
+        }
+      }
+
+      &:not(.secondary) {
+        background-color: #f5c518;
+        color: #000;
+
+        &:hover {
+          background-color: #ffe96a;
         }
       }
     }
@@ -57,49 +59,65 @@
 }
 
 .home-trending-section {
+  margin-top: 4rem;
+}
+
+.creator-leaderboard {
+  margin-top: 4rem;
+  background-color: #1c1c2e;
   padding: 2rem;
-  background: #1c1c2e;
-  color: #ffffff;
+  border-radius: 12px;
 
   h2 {
     font-size: 2rem;
-    margin-bottom: 1rem;
     color: #f5c518;
+    margin-bottom: 1.5rem;
   }
 
-  .trending-nfts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
+  ul {
+    list-style: none;
+    padding: 0;
 
-  .nft-card {
-    background: #2a2a3c;
-    border-radius: 12px;
-    padding: 1rem;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    .creator-card {
+      display: flex;
+      align-items: center;
+      background: #2a2a3c;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      transition: background 0.2s ease;
 
-    &:hover {
-      transform: translateY(-5px);
-    }
+      &:hover {
+        background: #34344a;
+      }
 
-    img {
-      width: 100%;
-      border-radius: 8px;
-    }
+      .rank {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        color: #ff3d3d;
+        font-weight: bold;
+      }
 
-    .nft-title {
-      margin-top: 0.75rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 1rem;
+      }
 
-    .nft-price {
-      font-size: 0.9rem;
-      color: #f5c518;
-      margin-top: 0.25rem;
+      .info {
+        strong {
+          display: block;
+          font-size: 1rem;
+          color: #ffffff;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: #f5c518;
+        }
+      }
     }
   }
 }
