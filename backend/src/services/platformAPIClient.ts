@@ -1,69 +1,44 @@
-import axios from "axios";
-import environments from "./environments";
+import axios from 'axios';
+import environments from '../environments';
 
-// Pi Network API base
-const API_BASE_URL = "https://api.minepi.com";
+const PI_API_BASE_URL = 'https://api.minepi.com/v2';
 
-const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    Authorization: `Key ${environments.PI_API_KEY}`,
-    "Content-Type": "application/json",
-  },
-});
+const headers = {
+  Authorization: `Key ${environments.pi.apiKey}`,
+  'Content-Type': 'application/json',
+};
 
 /**
- * Verify the user access token with Pi servers
+ * Create a new payment using the Pi Network platform API.
  */
-export async function verifyAccessToken(accessToken: string) {
-  try {
-    const response = await axiosInstance.get("/me", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    return response.data;
-  } catch (error: any) {
-    console.error("❌ Failed to verify access token:", error.response?.data || error.message);
-    throw error;
-  }
+async function createPayment(data: {
+  amount: number;
+  memo: string;
+  metadata: object;
+  uid: string;
+}) {
+  const response = await axios.post(`${PI_API_BASE_URL}/payments`, data, { headers });
+  return response.data;
 }
 
 /**
- * Submit a payment (app server -> Pi server)
+ * Submit a transaction ID to confirm the payment.
  */
-export async function submitPayment(paymentData: any) {
-  try {
-    const response = await axiosInstance.post("/v2/payments", paymentData);
-    return response.data;
-  } catch (error: any) {
-    console.error("❌ Failed to submit payment:", error.response?.data || error.message);
-    throw error;
-  }
+async function submitTxId(paymentId: string, txid: string) {
+  const response = await axios.post(`${PI_API_BASE_URL}/payments/${paymentId}/submit`, { txid }, { headers });
+  return response.data;
 }
 
 /**
- * Complete a payment
+ * Check the status of a payment.
  */
-export async function completePayment(paymentId: string, txid: string) {
-  try {
-    const response = await axiosInstance.post(`/v2/payments/${paymentId}/complete`, { txid });
-    return response.data;
-  } catch (error: any) {
-    console.error("❌ Failed to complete payment:", error.response?.data || error.message);
-    throw error;
-  }
+async function getPayment(paymentId: string) {
+  const response = await axios.get(`${PI_API_BASE_URL}/payments/${paymentId}`, { headers });
+  return response.data;
 }
 
-/**
- * Cancel a payment
- */
-export async function cancelPayment(paymentId: string) {
-  try {
-    const response = await axiosInstance.post(`/v2/payments/${paymentId}/cancel`);
-    return response.data;
-  } catch (error: any) {
-    console.error("❌ Failed to cancel payment:", error.response?.data || error.message);
-    throw error;
-  }
-}
+export default {
+  createPayment,
+  submitTxId,
+  getPayment,
+};
