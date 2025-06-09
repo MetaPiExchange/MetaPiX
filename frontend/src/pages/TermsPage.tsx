@@ -1,16 +1,11 @@
-import './TermsPage.scss';
 import React from 'react';
+import './TermsPage.scss';
 
 const TermsPage = () => {
   return (
-    <div className="container">
-      <iframe
-        src="/terms.html"
-        title="Terms of Service"
-        width="100%"
-        height="1000px"
-        style={{ border: 'none' }}
-      />
+    <div className="terms-page">
+      <h1>Terms of Service</h1>
+      <iframe src="/terms.html" title="Terms of Service" />
     </div>
   );
 };
