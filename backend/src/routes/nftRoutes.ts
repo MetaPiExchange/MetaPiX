@@ -52,11 +52,38 @@ const trendingCollections = [
   },
 ];
 
-// GET /api/nfts - Return list of NFTs
+// GET /api/nfts - Optional query filtering
 router.get('/nfts', (req, res) => {
-  res.status(200).json({ nfts: mockNFTs });
-});
+  const { title, creator, minPrice, maxPrice } = req.query;
 
+  let filteredNFTs = [...mockNFTs];
+
+  if (title) {
+    filteredNFTs = filteredNFTs.filter(nft =>
+      nft.title.toLowerCase().includes((title as string).toLowerCase())
+    );
+  }
+
+  if (creator) {
+    filteredNFTs = filteredNFTs.filter(nft =>
+      nft.creator.toLowerCase().includes((creator as string).toLowerCase())
+    );
+  }
+
+  if (minPrice) {
+    filteredNFTs = filteredNFTs.filter(nft =>
+      nft.price >= parseFloat(minPrice as string)
+    );
+  }
+
+  if (maxPrice) {
+    filteredNFTs = filteredNFTs.filter(nft =>
+      nft.price <= parseFloat(maxPrice as string)
+    );
+  }
+
+  res.status(200).json({ nfts: filteredNFTs });
+});
 // GET /api/nfts/trending - Return trending collections
 router.get('/nfts/trending', (req, res) => {
   res.status(200).json({ collections: trendingCollections });
