@@ -1,0 +1,25 @@
+.dashboard-container {
+  padding: 2rem;
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: #f5c013;
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  background: #292929;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+}
