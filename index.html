@@ -1,62 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MetaPiX | Pi NFT Marketplace</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #3b006a;
-      color: #ffd700;
-      text-align: center;
-      padding: 40px;
-    }
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ExplorePage from './pages/ExplorePage'; // Optional placeholder
+import Dashboard from './pages/Dashboard';     // Optional placeholder
+import TermsPage from './pages/TermsPage';     // To display ToS
+import PrivacyPage from './pages/PrivacyPage'; // To display Privacy Policy
+import './App.scss';
 
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 10px auto 30px auto;
-    }
-
-    a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      color: #3b006a;
-      background-color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    a:hover {
-      background-color: #f2c200;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #bb9cff;
-    }
-  </style>
-</head>
-<body>
-  <h1>Welcome to MetaPiX</h1>
-  <p>The first NFT marketplace and creator platform built for the Pi Network, currently in testnet phase.</p>
-
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Service</a>
-
-  <footer>
-    &copy; 2025 MetaPiX. Powered by Pi Network. Contact: <a href="mailto:squadhelpmetapix@gmail.com" style="color:#bb9cff;">squadhelpmetapix@gmail.com</a>
-  </footer>
-</body>
-</html>
+export default App;
