@@ -1,16 +1,11 @@
-import './PrivacyPage.scss';
 import React from 'react';
+import './PrivacyPage.scss';
 
 const PrivacyPage = () => {
   return (
-    <div className="container">
-      <iframe
-        src="/privacy.html"
-        title="Privacy Policy"
-        width="100%"
-        height="1000px"
-        style={{ border: 'none' }}
-      />
+    <div className="privacy-page">
+      <h1>Privacy Policy</h1>
+      <iframe src="/privacy.html" title="Privacy Policy" />
     </div>
   );
 };
