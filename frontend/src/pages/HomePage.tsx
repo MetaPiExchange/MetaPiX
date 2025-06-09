@@ -1,6 +1,6 @@
-import TrendingNFTs from '../components/TrendingNFTs';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TrendingNFTs from '../components/TrendingNFTs';
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -15,6 +15,10 @@ const HomePage = () => {
           <Link to="/dashboard" className="btn secondary">My Dashboard</Link>
         </div>
       </header>
+
+      <section className="home-trending-section">
+        <TrendingNFTs />
+      </section>
     </div>
   );
 };
