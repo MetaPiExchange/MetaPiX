@@ -1,0 +1,71 @@
+// App.scss – Global styles
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #14141f; // Pi dark background
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #f5c518; // Pi yellow for links
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+h1, h2, h3 {
+  color: #f5c518;
+}
+
+button {
+  font-family: inherit;
+  padding: 0.6rem 1.2rem;
+  background-color: #f5c518;
+  border: none;
+  border-radius: 6px;
+  color: #14141f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: #ffd700;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+// Reusable section styling
+.section {
+  margin-bottom: 3rem;
+}
+
+.card {
+  background-color: #1e1e2e;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
