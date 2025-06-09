@@ -1,3 +1,4 @@
+import './PrivacyPage.scss';
 import React from 'react';
 
 const PrivacyPage = () => {
