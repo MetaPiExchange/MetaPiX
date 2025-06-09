@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: 'Poppins', sans-serif;
   background-color: #14141f; // Pi dark background
   color: #ffffff;
@@ -68,4 +68,26 @@ button {
   &:hover {
     transform: translateY(-4px);
   }
+}
+
+// App layout wrapper
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Main content area
+main {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+// Footer behavior
+footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
 }
