@@ -1,0 +1,29 @@
+.site-footer {
+  background-color: #1e1e2e;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+
+  .footer-links {
+    margin-bottom: 0.5rem;
+
+    a {
+      color: #f5c518;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    span {
+      color: #555;
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.9rem;
+  }
+}
