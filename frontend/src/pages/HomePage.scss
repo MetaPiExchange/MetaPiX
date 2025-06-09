@@ -1,0 +1,51 @@
+.home-container {
+  background-color: #3b0062; // Pi Network purple
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.logo {
+  width: 160px;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: #f5c013; // Pi yellow
+  color: #3b0062;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #e0b000;
+  }
+}
+
+.btn.secondary {
+  background-color: #ff4545; // Red-black tone
+  color: white;
+
+  &:hover {
+    background-color: #c00000;
+  }
+}
