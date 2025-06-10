@@ -1,5 +1,12 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import BrowserRouter from 'react-router-dom/BrowserRouter'
+
+ReactDOM.render((
+   <BrowserRouter basename={process.env.PUBLIC_URL}>
+     <App />
+   </BrowserRouter>
+), ...)  
+
 import HomePage from './pages/HomePage';
 import ExplorePage from './pages/ExplorePage';
 import Dashboard from './pages/Dashboard';
