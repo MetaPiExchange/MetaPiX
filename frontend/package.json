@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "https://MetaPiExchange.github.io/MetaPiX",
+  "predeploy": "npm run build",
+
+"deploy": "gh-pages -d build"
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
