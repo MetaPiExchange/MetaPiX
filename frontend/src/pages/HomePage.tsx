@@ -6,6 +6,7 @@ import './HomePage.scss';
 
 const HomePage = () => {
   return (
+    <Route exact path='/' render= ... />} />
     <div className="home-container">
       <header className="home-header">
         <img src="/assets/logo.png" alt="MetaPiX Logo" className="logo" />
