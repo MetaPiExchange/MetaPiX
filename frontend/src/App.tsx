@@ -2,7 +2,7 @@ import React from 'react';
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 
 ReactDOM.render((
-   <BrowserRouter basename={process.env.PUBLIC_URL}>
+   <BrowserRouter basename={process.env.FRONTEND_URL}>
      <App />
    </BrowserRouter>
 ), ...)  
