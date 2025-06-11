@@ -1,7 +1,7 @@
 {
   "name": "metapix-frontend",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "homepage": "https://metapiexchange.github.io/MetaPiX/",
   "predeploy": "npm run build",
 
