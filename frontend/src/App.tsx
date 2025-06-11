@@ -26,6 +26,7 @@ const App = () => {
           <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
+       </Switch>
     </Router>
   );
 };
