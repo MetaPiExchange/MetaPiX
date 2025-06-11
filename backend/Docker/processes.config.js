@@ -11,8 +11,8 @@ module.exports = {
         NODE_ENV: 'development',
         PORT: 8000,
         MONGODB_URI: 'mongodb://demoapp:dev_password@mongo:27017/demoapp-development?authSource=admin',
-        SESSION_SECRET: 'S3cureMetaPiXKey2025!@#$', // Replace this later with .env reference if using dotenv
-        PI_API_KEY: 'frqkee341nb6fdfgtisdywi90ul2cvsxlv9tjaotleaqjm05ienpodtwuwgqewew',
+        SESSION_SECRET: '', // Replace this later with .env reference if using dotenv
+        PI_API_KEY: '',
         FRONTEND_URL: 'https://metapiexchange.github.io/MetaPiX/',
       },
     },
